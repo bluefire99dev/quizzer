@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -28,17 +29,14 @@ class QuizePage extends StatefulWidget {
 }
 
 class _QuizePageState extends State<QuizePage> {
-  List<Icon> scorekeeper = [
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
+  List<Widget> scorekeeper = [];
+  List<String> questions = [
+    '1.modi from pakistan',
+    '2.india is good country',
+    "3.1+2=4 "
   ];
-  // List<String> myString = ["a", "c"];
+  int questionnumber = 0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -51,7 +49,7 @@ class _QuizePageState extends State<QuizePage> {
             padding: EdgeInsets.all(10.10),
             child: Center(
               child: Text(
-                'this is Que where we go',
+                questions[questionnumber],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   decoration: TextDecoration.none,
@@ -76,6 +74,8 @@ class _QuizePageState extends State<QuizePage> {
                 onPressed: () {
                   setState(
                     () {
+                      questionnumber++;
+                      print(questionnumber);
                       scorekeeper.add(
                         Icon(
                           Icons.check,
@@ -100,6 +100,8 @@ class _QuizePageState extends State<QuizePage> {
               ),
               onPressed: () {
                 setState(() {
+                  questionnumber++;
+                  print(questionnumber);
                   scorekeeper.add(
                     Icon(
                       Icons.close,
