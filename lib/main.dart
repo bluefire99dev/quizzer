@@ -35,6 +35,7 @@ class _QuizePageState extends State<QuizePage> {
     '2.india is good country',
     "3.1+2=4 "
   ];
+  List<bool> answers = [false, true, true];
   int questionnumber = 0;
 
   @override
@@ -72,10 +73,16 @@ class _QuizePageState extends State<QuizePage> {
                   style: TextStyle(color: Colors.white, fontSize: 20.0),
                 ),
                 onPressed: () {
+                  bool correctAnswers = answers[questionnumber];
+                  if (correctAnswers == true) {
+                    print('right answer');
+                  } else {
+                    print('wrong answers');
+                  }
                   setState(
                     () {
                       questionnumber++;
-                      print(questionnumber);
+                      // print(questionnumber);
                       scorekeeper.add(
                         Icon(
                           Icons.check,
@@ -99,9 +106,15 @@ class _QuizePageState extends State<QuizePage> {
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
               ),
               onPressed: () {
+                bool correctAnswers = answers[questionnumber];
+                if (correctAnswers == false) {
+                  print('right answer');
+                } else {
+                  print('wrong answers');
+                }
                 setState(() {
                   questionnumber++;
-                  print(questionnumber);
+                  // print(questionnumber);
                   scorekeeper.add(
                     Icon(
                       Icons.close,
