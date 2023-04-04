@@ -28,7 +28,7 @@ class QuizePage extends StatefulWidget {
 }
 
 class _QuizePageState extends State<QuizePage> {
-  List<Widget> scorekeeper = [
+  List<Icon> scorekeeper = [
     Icon(
       Icons.check,
       color: Colors.green,
@@ -66,15 +66,25 @@ class _QuizePageState extends State<QuizePage> {
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Colors.green),
-              ),
-              child: Text(
-                'true',
-                style: TextStyle(color: Colors.white, fontSize: 20.0),
-              ),
-              onPressed: () {},
-            ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(Colors.green),
+                ),
+                child: Text(
+                  'true',
+                  style: TextStyle(color: Colors.white, fontSize: 20.0),
+                ),
+                onPressed: () {
+                  setState(
+                    () {
+                      scorekeeper.add(
+                        Icon(
+                          Icons.check,
+                          color: Colors.green,
+                        ),
+                      );
+                    },
+                  );
+                }),
           ),
         ),
         Expanded(
@@ -88,7 +98,16 @@ class _QuizePageState extends State<QuizePage> {
                 'False',
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
               ),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  scorekeeper.add(
+                    Icon(
+                      Icons.close,
+                      color: Colors.red,
+                    ),
+                  );
+                });
+              },
             ),
           ),
         ),
