@@ -1,4 +1,7 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
+import 'package:quizzer/component/quation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,14 +32,26 @@ class QuizePage extends StatefulWidget {
 }
 
 class _QuizePageState extends State<QuizePage> {
+  //
   List<Widget> scorekeeper = [];
-  List<String> questions = [
-    '1.modi from pakistan',
-    '2.india is good country',
-    "3.1+2=4 "
-  ];
-  List<bool> answers = [false, true, true];
+//   List<String> questions = [
+//     '1.modi from pakistan',
+//     '2.india is good country',
+//     "3.1+2=4 "
+//   ];
+//   List<bool> answers = [false, true, true];
+
+// //constaructoor
+//   Quation q1 = Quation(q: 'hello', a: false);
+
   int questionnumber = 0;
+
+//constructor
+  List<Quation> quationbank = [
+    Quation(q: 'modi is india', a: false),
+    Quation(q: 'moon is round', a: true),
+    Quation(q: 'apple is sweet', a: true),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +65,8 @@ class _QuizePageState extends State<QuizePage> {
             padding: EdgeInsets.all(10.10),
             child: Center(
               child: Text(
-                questions[questionnumber],
+                quationbank[questionnumber].quationText,
+                // questions[questionnumber],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   decoration: TextDecoration.none,
@@ -73,7 +89,9 @@ class _QuizePageState extends State<QuizePage> {
                   style: TextStyle(color: Colors.white, fontSize: 20.0),
                 ),
                 onPressed: () {
-                  bool correctAnswers = answers[questionnumber];
+                  bool correctAnswers =
+                      quationbank[questionnumber].quationAnswer;
+                  // bool correctAnswers = answers[questionnumber];
                   if (correctAnswers == true) {
                     print('right answer');
                   } else {
@@ -106,7 +124,8 @@ class _QuizePageState extends State<QuizePage> {
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
               ),
               onPressed: () {
-                bool correctAnswers = answers[questionnumber];
+                bool correctAnswers = quationbank[questionnumber].quationAnswer;
+                // bool correctAnswers = answers[questionnumber];
                 if (correctAnswers == false) {
                   print('right answer');
                 } else {
