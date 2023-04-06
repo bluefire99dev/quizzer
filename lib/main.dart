@@ -1,7 +1,8 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
-import 'package:quizzer/component/quation.dart';
+import 'package:quizzer/component/quiz_brain.dart';
+
+//abstraction---object
+QuizBrain quizBrain = QuizBrain();
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Padding(
@@ -47,11 +48,11 @@ class _QuizePageState extends State<QuizePage> {
   int questionnumber = 0;
 
 //constructor
-  List<Quation> quationbank = [
-    Quation(q: 'modi is india', a: false),
-    Quation(q: 'moon is round', a: true),
-    Quation(q: 'apple is sweet', a: true),
-  ];
+  // List<Quation> quationbank = [
+  //   Quation(q: 'modi is india', a: false),
+  //   Quation(q: 'moon is round', a: true),
+  //   Quation(q: 'apple is sweet', a: true),
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ class _QuizePageState extends State<QuizePage> {
             padding: EdgeInsets.all(10.10),
             child: Center(
               child: Text(
-                quationbank[questionnumber].quationText,
+                quizBrain.quationbank[questionnumber].quationText,
                 // questions[questionnumber],
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -90,7 +91,10 @@ class _QuizePageState extends State<QuizePage> {
                 ),
                 onPressed: () {
                   bool correctAnswers =
-                      quationbank[questionnumber].quationAnswer;
+                      quizBrain.quationbank[questionnumber].quationAnswer;
+                  // correctAnswers = quizBrain
+                  //     .quationbank[questionnumber].quationAnswer = true;
+
                   // bool correctAnswers = answers[questionnumber];
                   if (correctAnswers == true) {
                     print('right answer');
@@ -124,7 +128,8 @@ class _QuizePageState extends State<QuizePage> {
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
               ),
               onPressed: () {
-                bool correctAnswers = quationbank[questionnumber].quationAnswer;
+                bool correctAnswers =
+                    quizBrain.quationbank[questionnumber].quationAnswer;
                 // bool correctAnswers = answers[questionnumber];
                 if (correctAnswers == false) {
                   print('right answer');

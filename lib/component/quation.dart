@@ -1,7 +1,3 @@
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:quizzer/component/quation.dart';
-
 class Quation {
   late String quationText;
   late bool quationAnswer;
@@ -11,3 +7,6 @@ class Quation {
     quationAnswer = a;
   }
 }
+
+//object
+Quation newQuastion = Quation(a: true, q: 'text');
